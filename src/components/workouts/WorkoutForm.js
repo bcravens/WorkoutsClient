@@ -2,6 +2,20 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { createWorkout } from '../../actions/workoutActions'
 import TextFieldGroup from '../common/TextFieldGroup'
+import Validator from 'validator'
+import isEmpty from 'lodash/isEmpty'
+
+function validateInput(data) {
+  let errors = {}
+
+  if (Validator.isEmpty(data.name)) {
+    errors.name = 'This field is required'
+  }
+  return {
+    errors,
+    isValid: isEmpty(errors)
+  }
+}
 
 class WorkoutForm extends React.Component {
   constructor(props) {
@@ -21,9 +35,31 @@ class WorkoutForm extends React.Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
+  isValid() {
+    const { errors, isValid } = validateInput(this.state)
+
+    if (!isValid) {
+      this.setState({ errors })
+    }
+
+    return isValid
+  }
+
   onSubmit(e) {
     e.preventDefault()
-    this.props.createWorkout(this.state)
+    if (this.isValid()) {
+      this.setState({ errors: {}, isLoading: true })
+      this.props.createWorkout(this.state).then(
+        () => {
+          this.props.addFlashMessage({
+            type: 'success',
+            text: 'You have successfully created a new workout! Now add some exercises.'
+          })
+          this.context.router.push('/workouts')
+        },
+        (err) => this.setState({ errors: err.response.data, isLoading: false })
+      )
+    }
   }
 
   render() {
@@ -34,12 +70,12 @@ class WorkoutForm extends React.Component {
         <h1>Create New Workout</h1>
 
         <TextFieldGroup
-          field="title"
-          label="Workout Title"
-          name="title"
-          value={title}
+          field="name"
+          label="Name"
+          name="name"
+          value={name}
           onChange={this.onChange}
-          error={errors.title}
+          error={errors.name}
         />
 
       <button type="submit" disabled={ isLoading } className="btn btn-primary">Create</button>
@@ -48,8 +84,13 @@ class WorkoutForm extends React.Component {
   }
 }
 
+WorkoutForm.contextTypes = {
+  router: React.PropTypes.object.isRequired
+}
+
 WorkoutForm.propTypes = {
-  createWorkout: React.PropTypes.func.isRequired
+  createWorkout: React.PropTypes.func.isRequired,
+  addFlashMessage: React.PropTypes.func.isRequired
 }
 
 export default connect(null, { createWorkout })(WorkoutForm)

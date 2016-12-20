@@ -11,7 +11,7 @@ export function setWorkouts(workouts) {
 export function getWorkouts() {
   return dispatch => {
     return axios.get('/api/workouts/workouts')
-      .then( res => dispatch(setWorkouts(res.data.users)))
+      .then( res => dispatch(setWorkouts(res.data.workouts)))
   }
 }
 
