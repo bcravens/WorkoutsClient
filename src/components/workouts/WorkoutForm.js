@@ -1,13 +1,14 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { createEvent } from '../../actions/eventActions'
+import { createWorkout } from '../../actions/workoutActions'
 import TextFieldGroup from '../common/TextFieldGroup'
 
-class EventForm extends React.Component {
+class WorkoutForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      title: '',
+      name: '',
+      user_id: this.props.user.id,
       errors: {},
       isLoading: false
     }
@@ -22,19 +23,19 @@ class EventForm extends React.Component {
 
   onSubmit(e) {
     e.preventDefault()
-    this.props.createEvent(this.state)
+    this.props.createWorkout(this.state)
   }
 
   render() {
-    const { title, errors, isLoading } = this.state
+    const { name, user_id, errors, isLoading } = this.state
 
     return (
       <form onSubmit={this.onSubmit}>
-        <h1>Create New Game Event</h1>
+        <h1>Create New Workout</h1>
 
         <TextFieldGroup
           field="title"
-          label="Event Title"
+          label="Workout Title"
           name="title"
           value={title}
           onChange={this.onChange}
@@ -47,8 +48,8 @@ class EventForm extends React.Component {
   }
 }
 
-EventForm.propTypes = {
-  createEvent: React.PropTypes.func.isRequired
+WorkoutForm.propTypes = {
+  createWorkout: React.PropTypes.func.isRequired
 }
 
-export default connect(null, { createEvent })(EventForm)
+export default connect(null, { createWorkout })(WorkoutForm)
