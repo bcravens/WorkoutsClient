@@ -1,0 +1,12 @@
+.workout {
+  height: 150px;
+  width: 200px;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.workouts {
+  display: flex;
+  flex-wrap: wrap;
+}

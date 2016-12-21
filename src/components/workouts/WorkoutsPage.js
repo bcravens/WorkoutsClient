@@ -5,14 +5,13 @@ import { getWorkouts } from '../../actions/workoutActions'
 
 class WorkoutsPage extends React.Component {
   componentDidMount() {
-    this.props.getWorkouts()
+    this.props.getWorkouts(this.props.user.id)
   }
   render() {
     return (
       <div>
-        <h1>Workouts</h1>
-
-        <WorkoutsList workouts={this.props.workouts} />
+        <h1>Your Workouts</h1>
+            <WorkoutsList workouts={this.props.workouts} />
       </div>
     )
   }
@@ -25,7 +24,8 @@ WorkoutsPage.propTypes = {
 
 function mapStateToProps(state) {
   return {
-    workouts: state.workouts
+    workouts: state.workouts,
+    user: state.auth.user
   }
 }
 

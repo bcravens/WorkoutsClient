@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { createWorkout } from '../../actions/workoutActions'
-import TextFieldGroup from '../common/TextFieldGroup'
+import { createExercise } from '../../actions/exerciseActions'
 import Validator from 'validator'
 import isEmpty from 'lodash/isEmpty'
 
@@ -11,13 +10,22 @@ function validateInput(data) {
   if (Validator.isEmpty(data.name)) {
     errors.name = 'This field is required'
   }
+  if (Validator.isEmpty(data.sets)) {
+    errors.name = 'This field is required'
+  }
+  if (Validator.isEmpty(data.reps)) {
+    errors.name = 'This field is required'
+  }
+  if (Validator.isEmpty(data.weight)) {
+    errors.name = 'This field is required'
+  }
   return {
     errors,
     isValid: isEmpty(errors)
   }
 }
 
-class WorkoutForm extends React.Component {
+class ExerciseForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
