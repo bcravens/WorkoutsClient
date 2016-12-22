@@ -69,6 +69,7 @@ class WorkoutForm extends React.Component {
         <h1>Create New Workout</h1>
 
         <TextFieldGroup
+          field="name"
           label="Name"
           name="name"
           value={name}

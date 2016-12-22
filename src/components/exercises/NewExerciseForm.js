@@ -13,8 +13,6 @@ class ExerciseForm extends React.Component {
       sets: '',
       reps: '',
       weight: '',
-      errors: {},
-      isLoading: false
     }
 
     this.onChange = this.onChange.bind(this)
@@ -35,24 +33,23 @@ class ExerciseForm extends React.Component {
       reps: parseInt(this.state.reps),
       weight: parseInt(this.state.weight),
     }
-      this.setState({ errors: {}, isLoading: true })
+      this.setState({ isLoading: true })
       this.props.createExercise(input).then(
         () => {
           this.props.addFlashMessage({
             type: 'success',
             text: 'You have successfully created a new Exercise! Add some more'
           })
-        },
-        (err) => this.setState({ errors: err.response.data, isLoading: false })
+        }
       )
   }
 
   render() {
-    const { name, sets, reps, weight, user_id, workout_id, errors, isLoading } = this.state
+    const { name, sets, reps, weight, user_id, workout_id, isLoading } = this.state
 
     return (
       <form onSubmit={this.onSubmit}>
-        <h1>New Exercise</h1>
+        <h2>New Exercise</h2>
 
         <TextFieldGroup
           field="name"
@@ -60,7 +57,6 @@ class ExerciseForm extends React.Component {
           name="name"
           value={name}
           onChange={this.onChange}
-          error={errors.name}
         />
 
         <TextFieldGroup
@@ -69,7 +65,6 @@ class ExerciseForm extends React.Component {
           name="sets"
           value={sets}
           onChange={this.onChange}
-          error={errors.sets}
         />
 
         <TextFieldGroup
@@ -78,7 +73,6 @@ class ExerciseForm extends React.Component {
           name="reps"
           value={reps}
           onChange={this.onChange}
-          error={errors.reps}
         />
 
         <TextFieldGroup
@@ -87,10 +81,9 @@ class ExerciseForm extends React.Component {
           name="weight"
           value={weight}
           onChange={this.onChange}
-          error={errors.weight}
         />
 
-      <button type="submit" disabled={ isLoading } className="btn btn-primary">Create</button>
+      <button type="submit" className="btn btn-primary">Create</button>
       </form>
     )
   }

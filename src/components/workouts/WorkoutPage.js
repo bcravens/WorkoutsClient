@@ -4,12 +4,16 @@ import { getWorkout } from '../../actions/workoutActions'
 import { getExercises } from '../../actions/exerciseActions'
 import { addFlashMessage } from '../../actions/flashMessages.js'
 import WorkoutHeader from './WorkoutHeader'
+import ExerciseList from '../exercises/ExerciseList'
 import ExerciseForm from '../exercises/NewExerciseForm'
 
 
 class WorkoutPage extends React.Component {
   componentDidMount() {
     this.props.getWorkout(this.props.user.id, this.props.params.workout)
+    this.props.getExercises(this.props.params.workout)
+  }
+  componentDidUpdate() {
     this.props.getExercises(this.props.params.workout)
   }
 
@@ -22,6 +26,7 @@ class WorkoutPage extends React.Component {
             addFlashMessage={addFlashMessage}
             user={this.props.user}
             workout={this.props.params.workout} />
+          <ExerciseList exercises={this.props.exercises} />
       </div>
     )
   }
@@ -30,6 +35,7 @@ class WorkoutPage extends React.Component {
 function mapStateToProps(state) {
   return {
     workout: state.workout,
+    exercises: state.exercises,
     user: state.auth.user
   }
 }
