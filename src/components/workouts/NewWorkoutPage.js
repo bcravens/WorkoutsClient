@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import WorkoutForm from './WorkoutForm'
 import { connect } from 'react-redux'

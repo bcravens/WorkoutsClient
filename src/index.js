@@ -8,7 +8,6 @@ import rootReducer from './rootReducer'
 import setAuthorizationToken from './utils/setAuthorizationToken'
 import jwtDecode from 'jwt-decode'
 import { setCurrentUser } from './actions/authActions'
-import '../public/style.css'
 
 import routes from './routes'
 

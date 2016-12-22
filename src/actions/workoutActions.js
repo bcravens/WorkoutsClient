@@ -9,9 +9,9 @@ export function setWorkouts(workouts) {
   }
 }
 
-export function getWorkouts(identifier) {
+export function getWorkouts(user_id) {
   return dispatch => {
-    return axios.get(`/api/workouts/${identifier}`)
+    return axios.get(`/api/workouts/${user_id}`)
       .then( res => dispatch(setWorkouts(res.data.workouts)))
   }
 }
@@ -29,9 +29,9 @@ export function setWorkout(workout) {
   }
 }
 
-export function getWorkout(identifier, workout) {
+export function getWorkout(user_id, workout_id) {
   return dispatch => {
-    return axios.get(`/api/workout/${identifier}/${workout}`)
+    return axios.get(`/api/workout/${user_id}/${workout_id}`)
       .then( res => dispatch(setWorkout(res.data.workout)))
   }
 }

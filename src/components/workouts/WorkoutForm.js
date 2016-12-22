@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import { connect } from 'react-redux'
 import { createWorkout } from '../../actions/workoutActions'
