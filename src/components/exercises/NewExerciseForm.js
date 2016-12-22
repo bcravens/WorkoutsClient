@@ -1,29 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { createExercise } from '../../actions/exerciseActions'
-import Validator from 'validator'
-import isEmpty from 'lodash/isEmpty'
-
-function validateInput(data) {
-  let errors = {}
-
-  if (Validator.isEmpty(data.name)) {
-    errors.name = 'This field is required'
-  }
-  if (Validator.isEmpty(data.sets)) {
-    errors.name = 'This field is required'
-  }
-  if (Validator.isEmpty(data.reps)) {
-    errors.name = 'This field is required'
-  }
-  if (Validator.isEmpty(data.weight)) {
-    errors.name = 'This field is required'
-  }
-  return {
-    errors,
-    isValid: isEmpty(errors)
-  }
-}
+import TextFieldGroup from '../common/TextFieldGroup'
 
 class ExerciseForm extends React.Component {
   constructor(props) {
@@ -31,6 +9,10 @@ class ExerciseForm extends React.Component {
     this.state = {
       name: '',
       user_id: this.props.user.id,
+      workout_id:this.props.workout,
+      sets: '',
+      reps: '',
+      weight: '',
       errors: {},
       isLoading: false
     }
@@ -43,37 +25,34 @@ class ExerciseForm extends React.Component {
     this.setState({ [e.target.name]: e.target.value })
   }
 
-  isValid() {
-    const { errors, isValid } = validateInput(this.state)
-    if (!isValid) {
-      this.setState({ errors })
-    }
-    return isValid
-  }
-
   onSubmit(e) {
     e.preventDefault()
-    if (this.isValid()) {
+    let input = {
+      name: this.state.name,
+      user_id: this.state.user_id,
+      workout_id: parseInt(this.state.workout_id),
+      sets: parseInt(this.state.sets),
+      reps: parseInt(this.state.reps),
+      weight: parseInt(this.state.weight),
+    }
       this.setState({ errors: {}, isLoading: true })
-      this.props.createWorkout(this.state).then(
+      this.props.createExercise(input).then(
         () => {
           this.props.addFlashMessage({
             type: 'success',
-            text: 'You have successfully created a new workout! Now add some exercises.'
+            text: 'You have successfully created a new Exercise! Add some more'
           })
-          this.context.router.push('/workouts')
         },
         (err) => this.setState({ errors: err.response.data, isLoading: false })
       )
-    }
   }
 
   render() {
-    const { name, user_id, errors, isLoading } = this.state
+    const { name, sets, reps, weight, user_id, workout_id, errors, isLoading } = this.state
 
     return (
       <form onSubmit={this.onSubmit}>
-        <h1>Create New Workout</h1>
+        <h1>New Exercise</h1>
 
         <TextFieldGroup
           field="name"
@@ -84,19 +63,46 @@ class ExerciseForm extends React.Component {
           error={errors.name}
         />
 
+        <TextFieldGroup
+          field="sets"
+          label="Sets"
+          name="sets"
+          value={sets}
+          onChange={this.onChange}
+          error={errors.sets}
+        />
+
+        <TextFieldGroup
+          field="reps"
+          label="Reps"
+          name="reps"
+          value={reps}
+          onChange={this.onChange}
+          error={errors.reps}
+        />
+
+        <TextFieldGroup
+          field="weight"
+          label="Weight"
+          name="weight"
+          value={weight}
+          onChange={this.onChange}
+          error={errors.weight}
+        />
+
       <button type="submit" disabled={ isLoading } className="btn btn-primary">Create</button>
       </form>
     )
   }
 }
 
-WorkoutForm.contextTypes = {
+ExerciseForm.contextTypes = {
   router: React.PropTypes.object.isRequired
 }
 
-WorkoutForm.propTypes = {
-  createWorkout: React.PropTypes.func.isRequired,
+ExerciseForm.propTypes = {
+  createExercise: React.PropTypes.func.isRequired,
   addFlashMessage: React.PropTypes.func.isRequired
 }
 
-export default connect(null, { createWorkout })(WorkoutForm)
+export default connect(null, { createExercise })(ExerciseForm)

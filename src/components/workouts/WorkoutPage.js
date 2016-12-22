@@ -2,7 +2,10 @@ import React from 'react'
 import { connect } from 'react-redux'
 import { getWorkout } from '../../actions/workoutActions'
 import { getExercises } from '../../actions/exerciseActions'
+import { addFlashMessage } from '../../actions/flashMessages.js'
 import WorkoutHeader from './WorkoutHeader'
+import ExerciseForm from '../exercises/NewExerciseForm'
+
 
 class WorkoutPage extends React.Component {
   componentDidMount() {
@@ -11,10 +14,14 @@ class WorkoutPage extends React.Component {
   }
 
   render() {
-    console.log(this.props.workout)
+    const { addFlashMessage, user, workout } = this.props
     return (
       <div>
           <WorkoutHeader workout={this.props.workout} />
+          <ExerciseForm
+            addFlashMessage={addFlashMessage}
+            user={this.props.user}
+            workout={this.props.params.workout} />
       </div>
     )
   }
@@ -27,4 +34,4 @@ function mapStateToProps(state) {
   }
 }
 
-export default connect(mapStateToProps, { getWorkout, getExercises })(WorkoutPage)
+export default connect(mapStateToProps, { getWorkout, getExercises,  addFlashMessage })(WorkoutPage)
