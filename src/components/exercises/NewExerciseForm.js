@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import { connect } from 'react-redux'
 import { createExercise } from '../../actions/exerciseActions'
@@ -33,7 +34,6 @@ class ExerciseForm extends React.Component {
       reps: parseInt(this.state.reps),
       weight: parseInt(this.state.weight),
     }
-      this.setState({ isLoading: true })
       this.props.createExercise(input).then(
         () => {
           this.props.addFlashMessage({
@@ -45,7 +45,7 @@ class ExerciseForm extends React.Component {
   }
 
   render() {
-    const { name, sets, reps, weight, user_id, workout_id, isLoading } = this.state
+    const { name, sets, reps, weight, user_id, workout_id } = this.state
 
     return (
       <form onSubmit={this.onSubmit}>

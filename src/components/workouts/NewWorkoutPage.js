@@ -8,7 +8,7 @@ class NewWorkoutPage extends React.Component {
   render() {
     const { addFlashMessage, user } = this.props
     return (
-      <div>
+      <div className="col-md-4 col-md-offset-4">
         <WorkoutForm
           addFlashMessage={addFlashMessage}
           user={this.props.user}/>
