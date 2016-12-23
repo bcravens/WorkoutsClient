@@ -51,8 +51,8 @@ class LoginForm extends React.Component {
     if (this.isValid()) {
       this.setState({ errors: {}, isLoading: true })
       this.props.login(this.state).then(
-        (res) => this.context.router.push('/'),
-        (err) => this.setState({ errors: err.response.data.errors, isLoading: false })
+        (res) => this.context.router.push('/workouts'),
+        (err) => this.setState({ errors: err.response.data.errors, isLoading: false }),
       )
     }
   }
@@ -65,9 +65,8 @@ class LoginForm extends React.Component {
     const { errors, identifier, password, isLoading } = this.state
 
     return (
-      <form onSubmit={this.onSubmit}>
-        <h1>Login</h1>
-
+      <form onSubmit={this.onSubmit} style={{"width": "50%"}}>
+        <h1>Welcome back!</h1>
         { errors.form && <div className="alert alert-danger">{errors.form}</div> }
 
         <TextFieldGroup
