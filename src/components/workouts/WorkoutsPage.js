@@ -2,6 +2,7 @@ import React from 'react'
 import { connect } from 'react-redux'
 import WorkoutsList from './WorkoutsList'
 import { getWorkouts } from '../../actions/workoutActions'
+import '../../../public/styles/workouts.css'
 
 class WorkoutsPage extends React.Component {
   componentDidMount() {

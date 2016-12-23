@@ -1,7 +1,8 @@
 import React from 'react'
-import { Link } from 'react-router'
 import { connect } from 'react-redux'
 import { logout } from '../actions/authActions'
+import { Navbar, Nav, NavItem } from 'react-bootstrap'
+import { LinkContainer } from 'react-router-bootstrap'
 
 class NavBar extends React.Component {
   logout(e) {
@@ -12,42 +13,59 @@ class NavBar extends React.Component {
   render() {
     const { isAuthenticated } = this.props.auth
 
-    const userLinks = (
-      <ul className="nav navbar-nav navbar-left">
-        <li><Link to="/workouts">Workouts</Link></li>
-        <li><Link to="/new_workout">New Workout</Link></li>
-      </ul>
+    const userWorkouts = (
+      <LinkContainer to="/workouts">
+      <NavItem eventKey={1}>Workouts</NavItem>
+      </LinkContainer>
     )
 
-    const userLogout = (
-      <ul className="nav navbar-nav navbar-right">
-        <li><a href="#" onClick={this.logout.bind(this)}>Logout</a></li>
-      </ul>
+    const newWorkout = (
+      <LinkContainer to="/new_workout">
+      <NavItem eventKey={2}>New Workout</NavItem>
+      </LinkContainer>
     )
 
-    const guestLinks = (
-      <ul className="nav navbar-nav navbar-right">
-        <li><Link to="/signup">Sign up</Link></li>
-        <li><Link to="/login">Login</Link></li>
-      </ul>
+    const logout = (
+      <LinkContainer to="/">
+      <NavItem eventkey={3} onClick={this.logout.bind(this)}>Logout</NavItem>
+      </LinkContainer>
+    )
+
+    const signup = (
+      <LinkContainer to="/signup">
+      <NavItem eventKey={3}>Sign Up</NavItem>
+      </LinkContainer>
+    )
+
+    const login = (
+      <LinkContainer to="/login">
+      <NavItem eventKey={4}>Login</NavItem>
+      </LinkContainer>
     )
 
     return (
-      <nav className="navbar navbar-default">
-        <div className="container-fluid">
-          <div className="navbar-header">
-            <Link to="/" className="navbar-brand">Home</Link>
-          </div>
-
-          <div className="collapse navbar-collapse">
-            { isAuthenticated ? userLinks : null }
-            { isAuthenticated ? userLogout : guestLinks }
-          </div>
-        </div>
-      </nav>
+      <Navbar collapseOnSelect>
+        <Navbar.Header>
+          <LinkContainer to="">
+            <Navbar.Brand>
+              Home
+            </Navbar.Brand>
+          </LinkContainer>
+          <Navbar.Toggle />
+        </Navbar.Header>
+        <Navbar.Collapse>
+          <Nav pullRight>
+            { isAuthenticated ? userWorkouts : null }
+            { isAuthenticated ? newWorkout : null }
+            { isAuthenticated ? logout : signup && login }
+          </Nav>
+        </Navbar.Collapse>
+      </Navbar>
     )
   }
 }
+
+
 
 NavBar.propTypes = {
   auth: React.PropTypes.object.isRequired,

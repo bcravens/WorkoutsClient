@@ -8,7 +8,7 @@ class WorkoutsList extends React.Component {
     let results = workouts.map( (workout, index) => {
       let rtStr = `/workout/${workout.id}`
       return (
-        <Link to={ rtStr } key={index}>
+        <Link to={ rtStr } key={index} style={{ textDecoration: 'none' }}>
             <div className="panel panel-default workout">
               <div className="panel-body">
                 { workout.name }
