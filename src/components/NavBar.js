@@ -26,21 +26,7 @@ class NavBar extends React.Component {
     )
 
     const logout = (
-      <LinkContainer to="/">
       <NavItem eventkey={3} onClick={this.logout.bind(this)}>Logout</NavItem>
-      </LinkContainer>
-    )
-
-    const signup = (
-      <LinkContainer to="/signup">
-      <NavItem eventKey={3}>Sign Up</NavItem>
-      </LinkContainer>
-    )
-
-    const login = (
-      <LinkContainer to="/login">
-      <NavItem eventKey={4}>Login</NavItem>
-      </LinkContainer>
     )
 
     return (
@@ -57,7 +43,7 @@ class NavBar extends React.Component {
           <Nav pullRight>
             { isAuthenticated ? userWorkouts : null }
             { isAuthenticated ? newWorkout : null }
-            { isAuthenticated ? logout : signup && login }
+            { isAuthenticated ? logout : null }
           </Nav>
         </Navbar.Collapse>
       </Navbar>
