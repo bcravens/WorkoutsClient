@@ -87,3 +87,7 @@ body {
 .signupButton:focus {
   outline: none;
 }
+.exerciseFormContainer {
+  width: 400px;
+  margin-bottom: 15px;
+}

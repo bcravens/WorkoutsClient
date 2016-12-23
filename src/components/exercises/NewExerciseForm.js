@@ -40,6 +40,8 @@ class ExerciseForm extends React.Component {
             type: 'success',
             text: 'You have successfully created a new Exercise! Add some more'
           })
+          this.context.router.push(`/workouts/${this.props.workout}`)
+          this.setState({name: '', sets: '', reps: '', weight: ''})
         }
       )
   }

@@ -12,7 +12,7 @@ class WorkoutHeader extends React.Component {
       <p>You have no workouts yet!</p>
     )
     return (
-      <div className="workouts">
+      <div className="workoutHeader">
         { workout.length === 0 ? emptyMessage : results }
       </div>
     )

@@ -5,9 +5,10 @@ import { getWorkout } from '../../actions/workoutActions'
 import { getExercises } from '../../actions/exerciseActions'
 import { addFlashMessage } from '../../actions/flashMessages.js'
 import WorkoutHeader from './WorkoutHeader'
+import NavBar from '../NavBar'
 import ExerciseList from '../exercises/ExerciseList'
 import ExerciseForm from '../exercises/NewExerciseForm'
-
+import '../../../public/styles/workouts.css'
 
 class WorkoutPage extends React.Component {
   componentDidMount() {
@@ -22,12 +23,17 @@ class WorkoutPage extends React.Component {
     const { addFlashMessage, user, workout } = this.props
     return (
       <div>
+          <NavBar />
           <WorkoutHeader workout={this.props.workout} />
+          <div className="exerciseFormContainer">
           <ExerciseForm
             addFlashMessage={addFlashMessage}
             user={this.props.user}
             workout={this.props.params.workout} />
+          </div>
+          <div className="exerciseFormContainer">
           <ExerciseList exercises={this.props.exercises} />
+          </div>
       </div>
     )
   }

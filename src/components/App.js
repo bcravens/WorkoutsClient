@@ -6,7 +6,6 @@ class App extends React.Component {
   render() {
     return (
       <div>
-        <FlashMessagesList />
         {this.props.children}
       </div>
     )
