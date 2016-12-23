@@ -3,6 +3,7 @@ import { connect } from 'react-redux'
 import WorkoutsList from './WorkoutsList'
 import { getWorkouts } from '../../actions/workoutActions'
 import NavBar from '../NavBar'
+import FlashMessagesList from '../flash/FlashMessagesList'
 import '../../../public/styles/workouts.css'
 
 class WorkoutsPage extends React.Component {
@@ -13,6 +14,7 @@ class WorkoutsPage extends React.Component {
     return (
       <div>
         <NavBar />
+        <FlashMessagesList />
         <WorkoutsList workouts={this.props.workouts} />
       </div>
     )

@@ -8,6 +8,7 @@ import WorkoutHeader from './WorkoutHeader'
 import NavBar from '../NavBar'
 import ExerciseList from '../exercises/ExerciseList'
 import ExerciseForm from '../exercises/NewExerciseForm'
+import FlashMessagesList from '../flash/FlashMessagesList'
 import '../../../public/styles/workouts.css'
 
 class WorkoutPage extends React.Component {
@@ -24,6 +25,7 @@ class WorkoutPage extends React.Component {
     return (
       <div>
           <NavBar />
+          <FlashMessagesList />
           <WorkoutHeader workout={this.props.workout} />
           <div className="exerciseFormContainer">
           <ExerciseForm

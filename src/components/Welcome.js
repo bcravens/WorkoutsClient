@@ -59,7 +59,7 @@ class Welcome extends React.Component {
             <SignupForm
               isUserExists={isUserExists}
               userSignupRequest={userSignupRequest}
-              addFlashMessage={addFlashMessage}/>
+              addFlashMessage={addFlashMessage} />
           </Modal.Body>
           <Modal.Footer>
             <Button onClick={closeSignup}>Close</Button>
