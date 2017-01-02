@@ -1,0 +1,93 @@
+html {
+  height: 100%;
+}
+body {
+  height: 100%;
+}
+.userActionsContainer {
+  display: flex;
+  justify-content: center;
+  height: 350px;
+  width: 800px;
+  align-items: center;
+}
+.welcomeContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  border: 5vh double lemonchiffon;
+}
+.welcomeContainer h2 {
+  color: white;
+  font-size: 2vw;
+  font-weight: lighter;
+}
+.header h1 {
+  color: white;
+  font-size: 15vw;
+  letter-spacing: 2px;
+  font-family: 'Rambla', sans-serif;
+}
+.github {
+  position: relative;
+  top: 1vh;
+}
+.welcomeButtons {
+  display: flex;
+  flex-wrap: wrap;
+}
+.loginButton {
+   width: 140px;
+   height: 50px;
+   padding: 10px 15px;
+   background: rgba(68, 121, 186, .8);
+   color: #FFF;
+   border-radius: 4px;
+   text-decoration: none;
+   margin: 10px;
+   border: none;
+   font-weight: bolder;
+ }
+.loginButton:hover, .loginButton-link:focus {
+     background: #356094;
+     text-decoration: none;
+ }
+.loginButton:active {
+     box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+     background: #2E5481;
+     text-decoration: none;
+ }
+.loginButton:focus {
+  outline: none;
+}
+.signupButton {
+   width: 140px;
+   height: 50px;
+   padding: 10px 15px;
+   background: rgba(68, 121, 186, .8);
+   color: #FFF;
+   border: none;
+   border-radius: 4px;
+   text-decoration: none;
+   margin: 10px;
+  font-weight: bolder;
+}
+.signupButton:hover, .signupButton-link:focus {
+     background: #356094;
+     border: none;
+     text-decoration: none;
+ }
+.signupButton:active {
+     box-shadow: inset 0 1px 4px rgba(0, 0, 0, 0.6);
+     background: #2E5481;
+     text-decoration: none;
+ }
+.signupButton:focus {
+  outline: none;
+}
+.exerciseFormContainer {
+  width: 400px;
+  margin-bottom: 15px;
+}
