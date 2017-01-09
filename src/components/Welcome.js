@@ -91,7 +91,7 @@ class Welcome extends React.Component {
     return (
       <div className="welcomeContainer" style={{"background": '#ffad33' }}>
         <div className="header">
-          <h1>I WORK OUT</h1>
+          <h1>I WORKOUT</h1>
         </div>
        <h2>Easily build, track and, organize your workouts all in one place.</h2>
        <div className="welcomeButtons">
