@@ -1,3 +1,4 @@
+/* eslint-disable */
 import React from 'react'
 import { connect } from 'react-redux'
 import { logout } from '../actions/authActions'
@@ -32,7 +33,7 @@ class NavBar extends React.Component {
     return (
       <Navbar collapseOnSelect>
         <Navbar.Header>
-          <LinkContainer to="">
+          <LinkContainer to="/">
             <Navbar.Brand>
               Home
             </Navbar.Brand>

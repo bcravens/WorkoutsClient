@@ -87,7 +87,18 @@ body {
 .signupButton:focus {
   outline: none;
 }
-.exerciseFormContainer {
-  width: 400px;
+.exerciseContent {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+}
+.exerciseContainer {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
   margin-bottom: 15px;
+}
+.exerciseForm {
+  max-width: 500px;
 }

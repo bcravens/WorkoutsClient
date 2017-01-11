@@ -1,21 +1,40 @@
 import React from 'react'
+import { Table } from 'react-bootstrap'
+
 
 class ExerciseList extends React.Component {
   render() {
-
     let { exercises } = this.props
-    let results = exercises.map( (exercise, index) => {
-      return (
-            <div className="panel panel-default exercise" key={index}>
-              <div className="panel-body">
-                <h3>{ exercise.name }</h3>
-                <p>{ exercise.set }</p>
-                <p>{ exercise.reps }</p>
-                <p>{ exercise.weight }</p>
-              </div>
-            </div>
-      )
-    })
+    let result = exercises.map( (exercise, index) => {
+     return (
+       <tr key={index}>
+         <td>{index + 1}</td>
+         <td>{ exercise.name }</td>
+         <td>{ exercise.sets }</td>
+         <td>{ exercise.reps }</td>
+         <td>{ exercise.weight }</td>
+       </tr>
+     )
+   })
+
+    const results = (
+      <Table className="exerciseList">
+        <thead>
+          <tr>
+            <th>Exercises</th>
+            <th>Name</th>
+            <th>Sets</th>
+            <th>Reps</th>
+            <th>Weight</th>
+          </tr>
+        </thead>
+        <tbody>
+            { result }
+        </tbody>
+      </Table>
+    )
+
+
     const emptyMessage = (
       <p>You have no exercises yet!</p>
     )

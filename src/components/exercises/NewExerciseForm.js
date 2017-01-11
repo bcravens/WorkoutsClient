@@ -50,7 +50,7 @@ class ExerciseForm extends React.Component {
     const { name, sets, reps, weight, user_id, workout_id } = this.state
 
     return (
-      <form onSubmit={this.onSubmit}>
+      <form onSubmit={this.onSubmit} className="exerciseForm">
         <h2>New Exercise</h2>
 
         <TextFieldGroup

@@ -26,15 +26,17 @@ class WorkoutPage extends React.Component {
       <div>
           <NavBar />
           <FlashMessagesList />
-          <WorkoutHeader workout={this.props.workout} />
-          <div className="exerciseFormContainer">
-          <ExerciseForm
-            addFlashMessage={addFlashMessage}
-            user={this.props.user}
-            workout={this.props.params.workout} />
-          </div>
-          <div className="exerciseFormContainer">
-          <ExerciseList exercises={this.props.exercises} />
+          <div className="exerciseContent">
+            <WorkoutHeader workout={this.props.workout} />
+            <div className="exerciseContainer">
+              <ExerciseList exercises={this.props.exercises} />
+              <ExerciseForm
+                addFlashMessage={addFlashMessage}
+                user={this.props.user}
+                workout={this.props.params.workout} />
+              </div>
+            <div className="exerciseContainer">
+            </div>
           </div>
       </div>
     )
