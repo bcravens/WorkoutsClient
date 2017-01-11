@@ -86,7 +86,7 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  height: 95vh;
+  height: 110vh;
 }
 .exerciseContainer {
   display: flex;

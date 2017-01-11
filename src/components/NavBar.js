@@ -33,11 +33,14 @@ class NavBar extends React.Component {
     return (
       <Navbar collapseOnSelect inverse>
         <Navbar.Header>
-          <LinkContainer to="/">
-            <Navbar.Brand>
-              Home
+            <Navbar.Brand className="navBarLogo">
+              <LinkContainer to="/">
+              <div style={{height: 50, width: 225}}>
+                <img className="logo" src="http://i.imgur.com/g7XUaWI.png"></img>
+                I WORKOUT
+              </div>
+              </LinkContainer>
             </Navbar.Brand>
-          </LinkContainer>
           <Navbar.Toggle />
         </Navbar.Header>
         <Navbar.Collapse>

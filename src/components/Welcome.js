@@ -7,6 +7,7 @@ import { addFlashMessage } from '../actions/flashMessages.js'
 import { userSignupRequest, isUserExists } from '../actions/signupActions'
 import { logout } from '../actions/authActions'
 import { Modal, Button } from 'react-bootstrap'
+import { Link } from 'react-router'
 
 class Welcome extends React.Component {
   constructor(props) {
@@ -68,11 +69,19 @@ class Welcome extends React.Component {
       </div>
     )
     const logout = (
-      <button
-        className="loginButton"
-        onClick={this.logout.bind(this)}>
-        LOGOUT
-      </button>
+      <div>
+        <Link to="/workouts">
+          <button
+            className="loginButton">
+            WORKOUTS
+          </button>
+        </Link>
+        <button
+          className="loginButton"
+          onClick={this.logout.bind(this)}>
+          LOGOUT
+        </button>
+      </div>
     )
     const buttons = (
       <div>
@@ -89,7 +98,7 @@ class Welcome extends React.Component {
       </div>
     )
     return (
-      <div className="welcomeContainer" style={{"background": 'url(https://pixabay.com/get/e837b50b21f6043ed1534705fb0938c9bd22ffd41db9154090f5c770a3/sport-1244925_1920.jpg)', 'background-size': 'cover', 'background-repeat': 'no-repeat', 'background-position': 'center' }}>
+      <div className="welcomeContainer" style={{"background": 'url(http://i.imgur.com/9HjXEoC.jpg)', 'background-size': 'cover', 'background-repeat': 'no-repeat', 'background-position': 'center' }}>
         <div className="header">
           <h1>I WORKOUT</h1>
         </div>

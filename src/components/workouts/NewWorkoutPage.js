@@ -9,7 +9,7 @@ class NewWorkoutPage extends React.Component {
   render() {
     const { addFlashMessage, user } = this.props
     return (
-      <div>
+      <div style={{"background": 'rgb(231,233,232)' }}>
         <NavBar />
         <div className="col-md-4 col-md-offset-4">
           <WorkoutForm

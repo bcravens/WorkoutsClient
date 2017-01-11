@@ -53,3 +53,16 @@ Link {
 nav {
   background: orange;
 }
+.navBarLogo {
+  padding: 0px;
+  display: flex;
+  align-items: center;
+  font-family: 'Russo One', sans-serif;
+  color: white;
+  letter-spacing: 2px;
+}
+.logo {
+  margin-top: -2px;
+  height: 50px;
+  width: auto;
+}
