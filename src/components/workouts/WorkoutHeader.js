@@ -1,11 +1,12 @@
 import React from 'react'
+import { PageHeader } from 'react-bootstrap'
 
 class WorkoutHeader extends React.Component {
   render() {
     let { workout } = this.props
     let results = workout.map( (workout, index) => {
       return (
-        <h1 key={index}>{ workout.name } </h1>
+        <PageHeader key={index} className="workoutHeader">{ workout.name }</PageHeader>
       )
     })
     const emptyMessage = (

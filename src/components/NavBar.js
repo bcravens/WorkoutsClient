@@ -31,7 +31,7 @@ class NavBar extends React.Component {
     )
 
     return (
-      <Navbar collapseOnSelect>
+      <Navbar collapseOnSelect inverse>
         <Navbar.Header>
           <LinkContainer to="/">
             <Navbar.Brand>

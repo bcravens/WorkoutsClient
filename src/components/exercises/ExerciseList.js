@@ -1,7 +1,6 @@
 import React from 'react'
 import { Table } from 'react-bootstrap'
 
-
 class ExerciseList extends React.Component {
   render() {
     let { exercises } = this.props
@@ -21,7 +20,7 @@ class ExerciseList extends React.Component {
       <Table className="exerciseList">
         <thead>
           <tr>
-            <th>Exercises</th>
+            <th>Exercise</th>
             <th>Name</th>
             <th>Sets</th>
             <th>Reps</th>

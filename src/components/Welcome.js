@@ -89,7 +89,7 @@ class Welcome extends React.Component {
       </div>
     )
     return (
-      <div className="welcomeContainer" style={{"background": '#ffad33' }}>
+      <div className="welcomeContainer" style={{"background": 'url(https://pixabay.com/get/e837b50b21f6043ed1534705fb0938c9bd22ffd41db9154090f5c770a3/sport-1244925_1920.jpg)', 'background-size': 'cover', 'background-repeat': 'no-repeat', 'background-position': 'center' }}>
         <div className="header">
           <h1>I WORKOUT</h1>
         </div>

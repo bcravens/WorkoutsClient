@@ -23,7 +23,7 @@ class WorkoutPage extends React.Component {
   render() {
     const { addFlashMessage, user, workout } = this.props
     return (
-      <div>
+      <div style={{"background": 'rgb(231,233,232)' }}>
           <NavBar />
           <FlashMessagesList />
           <div className="exerciseContent">

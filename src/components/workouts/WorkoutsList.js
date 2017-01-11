@@ -21,8 +21,10 @@ class WorkoutsList extends React.Component {
       <p>You have no workouts yet!</p>
     )
     return (
-      <div className="workouts">
-        { workouts.length === 0 ? emptyMessage : results }
+      <div className="content" style={{"background": 'rgb(231,233,232)' }}>
+        <div className="workouts">
+          { workouts.length === 0 ? emptyMessage : results }
+        </div>
       </div>
     )
   }
